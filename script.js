@@ -1,16 +1,19 @@
 //  --NAVEGAÇÃO POR TABS-- //
 function initTabNav() {
   const tabMenu = document.querySelectorAll(".js-tabmenu li");
+
   const tabContent = document.querySelectorAll(".js-tabcontent section");
+
   const ativo = "ativo";
+
   if (tabMenu.length && tabContent.length) {
     tabContent[0].classList.add(ativo);
 
     function activeTab(index) {
       tabContent.forEach((section) => {
         section.classList.remove(ativo);
+        tabContent[index].classList.add(ativo);
       });
-      tabContent[index].classList.add(ativo);
     }
 
     tabMenu.forEach((itemMenu, index) => {
@@ -18,10 +21,9 @@ function initTabNav() {
         activeTab(index);
       });
     });
-  }
-}
+  };
+};
 initTabNav();
-
 
 //  --ACCORDDION LIST-- //
 function initAccorddion() {
@@ -40,12 +42,11 @@ function initAccorddion() {
       this.nextElementSibling.classList.toggle(ativo);
     }
   }
-};
+}
 initAccorddion();
 
-
 //  --SCROLL  SUAVE-- //
-  function initScrollSuave() {
+function initScrollSuave() {
   const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]');
 
   linksInternos.forEach((link) => {
@@ -64,11 +65,33 @@ initAccorddion();
     });
 
     // versão alternativa
-  // const topo = section.offsetTop;
-  //   window.scrollTo({
-  //     top: topo,
-  //     behavior: "smooth",
-  //   });
+    // const topo = section.offsetTop;
+    //   window.scrollTo({
+    //     top: topo,
+    //     behavior: "smooth",
+    //   });
   };
+};
+initScrollSuave();
+
+//  --ANIMAÇÃO AO SCROLL-- //
+function initAnimacaoScroll() {
+  const sections = document.querySelectorAll(".js-scroll");
+  const windowMetade = window.innerHeight * 0.7;
+
+  window.addEventListener("scroll", animacaoScroll);
+
+  function animacaoScroll() {
+    sections.forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top;
+
+      if (sectionTop < windowMetade) {
+        section.classList.add("ativo");
+      } else {
+        section.classList.remove("ativo");
+      };
+    });
   };
-  initScrollSuave();
+  animacaoScroll();
+};
+initAnimacaoScroll();
