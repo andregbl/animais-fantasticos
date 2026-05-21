@@ -1,3 +1,7 @@
+body.textoMaior {
+  font-size: 150%;
+}
+
 body,
 h1,
 h2,
@@ -122,6 +126,10 @@ body {
   background: var(--bg-color);
 }
 
+.animais-lista li {
+  cursor: pointer;
+}
+
 .animais-descricao {
   grid-column: 3;
 }
@@ -220,4 +228,69 @@ body {
   .copy {
     margin-bottom: 0;
   }
+}
+
+.js .js-tabcontent section {
+  display: none;
+}
+
+.js .js-tabcontent section.ativo {
+  display: block;
+  animation: show 0.8s forwards;
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js .js-accorddion dd {
+  display: none;
+}
+
+.js .js-accorddion dt {
+  cursor: pointer;
+}
+
+.js .js-accorddion dt::after {
+  content: "↴";
+  margin-left: 10px;
+}
+
+.js .js-accorddion dt.ativo::after {
+  content: "⬏";
+}
+
+.js-accorddion dd.ativo {
+  display: block;
+  animation: slideDown .5s forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  } 
+  to {
+    opacity: 1;
+    max-height: 100px;
+  }
+}
+
+.js .js-scroll {
+  opacity: 0;
+  transition: .3s;
+  transform: translate3d(-30px, 0, 0);
+}
+
+.js .js-scroll.ativo {
+  opacity: 1;
+  transition: .3s;
+  transform: translate3d(0, 0, 0);
 }
